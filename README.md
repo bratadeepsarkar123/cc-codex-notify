@@ -30,6 +30,34 @@ Side notifications (Windows toasts) when a Claude Code or Codex chat finishes, n
 4. For Codex, set `notify` in `%USERPROFILE%\.codex\config.toml` as printed.
 5. Start a new Claude Code or Codex chat, let it finish, and a toast should appear.
 
+## Troubleshooting
+
+Open PowerShell in the folder where you installed the scripts.
+
+1. For Claude Code, check `mode.txt` in that folder. If it contains `balloon`, the
+   hook uses a Windows notification-area balloon. Remove that file or change
+   its contents to `toast` to restore toasts.
+2. Finish a test chat, then read the newest log entries:
+
+   ```powershell
+   Get-Content -LiteralPath .\notify.log -Tail 20
+   ```
+
+   For Codex, use `.\codex-notify.log` instead. `SHOWN` or `CODEX TOAST shown`
+   means the script reported showing a toast. `SUPPRESSED` means the Claude
+   hook detected that you were already looking at the chat. An `ERROR` line
+   records the failure. If the log is missing or has no new entries, check
+   the hook or notify command from the installation steps. Remove private
+   details before sharing any log lines.
+3. If clicking a toast does not focus the chat, check the link handler:
+
+   ```powershell
+   Test-Path -LiteralPath 'HKCU:\Software\Classes\ccnotify-focus\shell\open\command'
+   ```
+
+   If it returns `False`, run the installer again from the scripts folder to
+   register the handler for your Windows account.
+
 ## Files
 
 | File              | Purpose                                                                                  |
