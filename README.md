@@ -57,6 +57,10 @@ Runtime files are written next to the scripts (`*.log`, `wt-map\`, `wt-windows.j
 - The link name `ccnotify-focus://` is only a name. To change it, edit `install.ps1`, `notify.ps1`, `codex-toast.ps1` and `focus.ps1` together, then run `install.ps1` again.
 - Nothing here sends data anywhere. Everything runs on your machine.
 
+## Contributing
+
+Small fixes and clear bug reports are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md). Issues marked **good first issue** are a good place to begin. Please do not include personal paths, chat names, logs or keys in issues or pull requests.
+
 ## License
 
 MIT. See `LICENSE`.
