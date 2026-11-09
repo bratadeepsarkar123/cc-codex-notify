@@ -1,0 +1,9 @@
+# Runtime state: logs, chat map, window cache, queue. Contain window titles, keep private.
+*.log
+wt-map/
+wt-windows.json
+queue/
+mode.txt
+diag-hook.log
+focus-test.log
+payload*.json
