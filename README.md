@@ -6,7 +6,7 @@ Side notifications (Windows toasts) when a Claude Code or Codex chat finishes, n
 
 - **Stop and permission toasts for Claude Code**, with the chat name, folder and last reply.
 - **Turn-end toasts for Codex** through its `notify` setting.
-- **Click to focus:** a `campusmeet-focus://` link brings back the right window. For Windows Terminal it selects the tab by its title and follows the virtual desktop.
+- **Click to focus:** a `ccnotify-focus://` link brings back the right window. For Windows Terminal it selects the tab by its title and follows the virtual desktop.
 - **No toast when you are already looking at that chat.**
 - **Dismiss on reply:** the toast is removed when you send the next message.
 - **Fallback:** a simple balloon (`ping.ps1`) if toasts fail.
@@ -25,7 +25,7 @@ Side notifications (Windows toasts) when a Claude Code or Codex chat finishes, n
    ```
    powershell -NoProfile -ExecutionPolicy Bypass -File .\install.ps1
    ```
-   This registers the `campusmeet-focus://` link for your user account only. It prints the hook block to add.
+   This registers the `ccnotify-focus://` link for your user account only. It prints the hook block to add.
 3. Merge the printed hooks into `%USERPROFILE%\.claude\settings.json`.
 4. For Codex, set `notify` in `%USERPROFILE%\.codex\config.toml` as printed.
 5. Start a new Claude Code or Codex chat, let it finish, and a toast should appear.
@@ -54,7 +54,7 @@ Runtime files are written next to the scripts (`*.log`, `wt-map\`, `wt-windows.j
 
 ## Notes
 
-- The link name `campusmeet-focus://` comes from the project where this was built. It is only a name; you can change it in `install.ps1`, `notify.ps1`, `codex-toast.ps1` and `focus.ps1` together.
+- The link name `ccnotify-focus://` is only a name. To change it, edit `install.ps1`, `notify.ps1`, `codex-toast.ps1` and `focus.ps1` together, then run `install.ps1` again.
 - Nothing here sends data anywhere. Everything runs on your machine.
 
 ## License

@@ -192,8 +192,8 @@ try {
     $body = if ($locked) { 'Claude needs your attention. Open Windows Terminal.' } else { if ($msg) { $msg } else { 'Claude needs your attention.' } }
   }
 
-  $launchUri = 'campusmeet-focus://focus?title=' + [uri]::EscapeDataString($title)
-  if ($wt) { $launchUri = 'campusmeet-focus://focus?wt=' + $wt + '&title=' + [uri]::EscapeDataString($title) }
+  $launchUri = 'ccnotify-focus://focus?title=' + [uri]::EscapeDataString($title)
+  if ($wt) { $launchUri = 'ccnotify-focus://focus?wt=' + $wt + '&title=' + [uri]::EscapeDataString($title) }
   # Plain console window (not Windows Terminal): the link carries its handle so the click can bring it back.
   $conHwnd = [string]$p.console_hwnd; $conClass = [string]$p.console_class
   if (-not $wt -and $conHwnd -match '^\d+$' -and $conHwnd -ne '0' -and $conClass -eq 'ConsoleWindowClass') {

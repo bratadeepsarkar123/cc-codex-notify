@@ -6,14 +6,14 @@ $here = $PSScriptRoot
 $focus = Join-Path $here 'focus.ps1'
 if (-not (Test-Path -LiteralPath $focus)) { throw "focus.ps1 not found next to install.ps1" }
 
-$key = 'HKCU:\Software\Classes\campusmeet-focus'
+$key = 'HKCU:\Software\Classes\ccnotify-focus'
 New-Item -Path $key -Force | Out-Null
-Set-ItemProperty -Path $key -Name '(default)' -Value 'URL:campusmeet-focus protocol'
+Set-ItemProperty -Path $key -Name '(default)' -Value 'URL:ccnotify-focus protocol'
 New-ItemProperty -Path $key -Name 'URL Protocol' -Value '' -PropertyType String -Force | Out-Null
 New-Item -Path "$key\shell\open\command" -Force | Out-Null
 $cmd = 'powershell.exe -NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File "' + $focus + '" "%1"'
 Set-ItemProperty -Path "$key\shell\open\command" -Name '(default)' -Value $cmd
-Write-Output "Registered campusmeet-focus:// -> $focus"
+Write-Output "Registered ccnotify-focus:// -> $focus"
 
 $snippet = @"
 

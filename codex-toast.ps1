@@ -1,5 +1,5 @@
 # Phase 2 Stage 5: Codex turn-end toast. Shows a Windows toast with the chat name, project folder and
-# last reply, and a click link that uses the same campusmeet-focus:// handler as Claude Code.
+# last reply, and a click link that uses the same ccnotify-focus:// handler as Claude Code.
 # Called by codex-notify.js. Always exits 0; the wrapper falls back to ping.ps1 if this fails.
 param(
   [string]$Title = 'Codex chat',
@@ -160,8 +160,8 @@ public static class CodexPeb {
       Log ("CODEX WT PARENT (folder match) pseudo_hwnd={0} terminal_window={1}" -f $conHwnd, $wtWinHwnd)
     } catch { Log ('CODEX WT PARENT (folder match) SKIPPED ' + $_.Exception.Message) }
   }
-  $launchUri = 'campusmeet-focus://focus?title=' + [uri]::EscapeDataString($Title)
-  if ($Wt) { $launchUri = 'campusmeet-focus://focus?wt=' + $Wt + '&title=' + [uri]::EscapeDataString($Title) }
+  $launchUri = 'ccnotify-focus://focus?title=' + [uri]::EscapeDataString($Title)
+  if ($Wt) { $launchUri = 'ccnotify-focus://focus?wt=' + $Wt + '&title=' + [uri]::EscapeDataString($Title) }
   if (-not $Wt -and $conHwnd -gt 0 -and $conClass -eq 'ConsoleWindowClass') { $launchUri += '&ch=' + $conHwnd }
   if ($wtWinHwnd -gt 0) { $launchUri += '&wh=' + $wtWinHwnd }
   # Tab name for the Terminal window: the Codex console's title (what Windows Terminal shows on the tab).

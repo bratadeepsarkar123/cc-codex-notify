@@ -1,4 +1,4 @@
-# Phase 2 Stage 2: handles a click on a campusmeet-focus:// toast.
+# Phase 2 Stage 2: handles a click on a ccnotify-focus:// toast.
 # 1. Works out the chat's current title: the live title from its transcript, then the tab map entry,
 #    then the title in the link. Each candidate is tried in turn.
 # 2. Finds Windows Terminal windows with the Win32 window list (this also sees windows on other
@@ -40,7 +40,7 @@ function Live-Title([string]$sid) {
 try {
   Log ("start uri=[{0}]" -f $Uri)
   # Windows may add a slash before the query ("focus/?wt=..."); accept both shapes.
-  if ($Uri -notmatch '^campusmeet-focus://focus/?\?') { Log 'REJECT scheme/path'; exit 0 }
+  if ($Uri -notmatch '^ccnotify-focus://focus/?\?') { Log 'REJECT scheme/path'; exit 0 }
   $wt = ''; $uriTitle = ''
   if ($Uri -match '[?&]wt=([0-9a-fA-F-]{36})(?:&|$)') { $wt = $Matches[1] }
   if ($Uri -match '[?&]title=([^&]*)') { $uriTitle = [Uri]::UnescapeDataString($Matches[1]) }
