@@ -30,6 +30,16 @@ Side notifications (Windows toasts) when a Claude Code or Codex chat finishes, n
 4. For Codex, set `notify` in `%USERPROFILE%\.codex\config.toml` as printed.
 5. Start a new Claude Code or Codex chat, let it finish, and a toast should appear.
 
+## Uninstall the click link
+
+From the same folder, run:
+
+```
+powershell -NoProfile -ExecutionPolicy Bypass -File .\uninstall.ps1
+```
+
+This removes only your user account's `ccnotify-focus://` registration, requires no administrator rights, and can be run again safely. It leaves Claude Code and Codex settings untouched. To stop notifications altogether, manually remove the hooks added during installation and restore the previous Codex `notify` setting (or remove that setting if you did not have one).
+
 ## Files
 
 | File              | Purpose                                                                                  |
@@ -42,6 +52,7 @@ Side notifications (Windows toasts) when a Claude Code or Codex chat finishes, n
 | `codex-toast.ps1` | Builds the Codex toast and its click link.                                               |
 | `ping.ps1`        | Phase 1 balloon fallback.                                                                |
 | `install.ps1`     | Registers the click link and prints the settings to add.                                 |
+| `uninstall.ps1`   | Removes only the current user's click link registration.                                 |
 
 Runtime files are written next to the scripts (`*.log`, `wt-map\`, `wt-windows.json`, `queue\`). They are ignored by git and contain window titles, so keep them private.
 
